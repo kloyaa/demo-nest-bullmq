@@ -17,13 +17,14 @@ export class QueueService {
     }
 
     async doSomethingAwesome(data: any, opts?: JobsOptions) {
-        this.addJob('doSomethingGood', data, opts)
+        this.addJob('doSomethingAwesome', data, opts)
     }
 
     private async addJob<T extends TJobNames>(jobName: T, data: any, opts?: JobsOptions) {
         await this.queueService.add(jobName, { body: data }, {
             ...opts,
             jobId: opts.jobId ?? crypto.randomUUID(),
+            attempts: 3,
             removeOnComplete: true
         });
     }

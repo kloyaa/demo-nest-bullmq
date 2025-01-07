@@ -10,6 +10,9 @@ import { QueueName } from './enum';
         DemoConsumer,
         BullModule.registerQueue({
             name: QueueName.fundTransferQueue,
+        },
+        {
+            name: QueueName.notificationQueue,
         })
     ],
     providers: [QueueService],

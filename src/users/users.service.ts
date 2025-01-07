@@ -8,7 +8,7 @@ export class UsersService {
   constructor(private queueService: QueueService) { }
 
   async create(createUserDto: CreateUserDto) {
-    await this.queueService.doSomethingGood(createUserDto, { delay: 5000  });
+    await this.queueService.doSomethingGood(createUserDto, { delay: 1000  });
     return 'This action adds a new user';
   }
 
