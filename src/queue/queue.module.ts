@@ -8,12 +8,10 @@ import { QueueName } from './enum';
 @Module({
     imports: [
         DemoConsumer,
-        BullModule.registerQueue({
-            name: QueueName.fundTransferQueue,
-        },
-        {
-            name: QueueName.notificationQueue,
-        })
+        BullModule.registerQueue(
+            { name: QueueName.fundTransferQueue },
+            { name: QueueName.notificationQueue },
+        )
     ],
     providers: [QueueService],
     exports: [QueueService]
