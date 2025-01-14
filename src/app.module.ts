@@ -5,18 +5,12 @@ import { BullModule } from '@nestjs/bullmq';
 import { UsersModule } from './users/users.module';
 import { QueueModule } from './queue/queue.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from 'src/common/entities/user.entity';
+import { typeormConfig } from './typeorm.config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'password',
-      database: 'demo_db',
-      synchronize: true,
-    }),
+    TypeOrmModule.forRootAsync(typeormConfig),
     QueueModule,
     BullModule.forRoot({
       connection: {

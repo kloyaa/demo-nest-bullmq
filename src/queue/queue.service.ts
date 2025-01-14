@@ -1,8 +1,8 @@
 import { InjectQueue } from '@nestjs/bullmq';
 import { Injectable } from '@nestjs/common';
 import { JobsOptions, Queue } from 'bullmq';
-import { TJobNames } from './types';
-import { QueueName } from './enum';
+import { TJobNames } from '../common/enum/types';
+import { QueueName } from '../common/enum/enum';
 
 @Injectable()
 export class QueueService {

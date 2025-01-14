@@ -2,7 +2,7 @@ import { Global, Module } from '@nestjs/common';
 import { QueueService } from './queue.service';
 import { BullModule } from '@nestjs/bullmq';
 import { DemoConsumer } from './queue.consumer';
-import { QueueName } from './enum';
+import { QueueName } from '../common/enum/enum';
 
 @Global()
 @Module({

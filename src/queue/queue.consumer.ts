@@ -1,7 +1,7 @@
 
 import { Processor, WorkerHost } from '@nestjs/bullmq';
-import { TConsumerJob } from './types';
-import { QueueName } from './enum';
+import { TConsumerJob } from '../common/enum/types';
+import { QueueName } from '../common/enum/enum';
 
 @Processor(QueueName.fundTransferQueue)
 export class DemoConsumer extends WorkerHost {

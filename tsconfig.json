@@ -19,7 +19,7 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@entity/user": [
-        "src/entities/user.entity"
+        "src/common/entities/user.entity"
       ]
     },
   }

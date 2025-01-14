@@ -7,19 +7,9 @@ const AppDataSource = new DataSource({
     username: 'postgres',
     password: 'password',
     database: 'demo_db',
-    entities: [
-        // Use a dynamic check for production vs development
-        process.env.NODE_ENV === 'production'
-            ? 'dist/entities/**/*.entity.js' // For production, point to compiled .js files
-            : 'src/entities/**/*.entity.ts',  // For development, point to .ts files
-    ],
+    entities: ["dist/**/*.entity{.js}"],
     migrationsTableName: "_migration",
-    migrations: [
-        // Ensure migrations path is also correct
-        process.env.NODE_ENV === 'production'
-            ? 'dist/_migrations/**/*{.ts,.js}' // For production, use .js files
-            : 'src/_migrations/**/*{.ts,.js}', // For development, use .ts files
-    ],
+    migrations: [__dirname + "/_migrations/**/*{.ts,.js}"],
     synchronize: false, // Don't use synchronize in production
     logging: true,
 });
