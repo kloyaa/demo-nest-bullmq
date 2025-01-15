@@ -12,12 +12,11 @@ export class UsersService {
     @InjectRepository(User)
     private userRepository: Repository<User>,
     private queueService: QueueService,
-  ) { }
+  ) {}
 
   async createUser(param: CreateUserDto) {
     const user = this.userRepository.create({ name: param.name });
     return await this.userRepository.save(user);
-
   }
   async create(createUserDto: CreateUserDto) {
     await this.queueService.doSomethingGood(createUserDto, { delay: 1000 });

@@ -6,14 +6,14 @@ import { QueueName } from '../common/enum/enum';
 
 @Global()
 @Module({
-    imports: [
-        DemoConsumer,
-        BullModule.registerQueue(
-            { name: QueueName.fundTransferQueue },
-            { name: QueueName.notificationQueue },
-        )
-    ],
-    providers: [QueueService],
-    exports: [QueueService]
+  imports: [
+    DemoConsumer,
+    BullModule.registerQueue(
+      { name: QueueName.fundTransferQueue },
+      { name: QueueName.notificationQueue },
+    ),
+  ],
+  providers: [QueueService],
+  exports: [QueueService],
 })
-export class QueueModule { }
+export class QueueModule {}

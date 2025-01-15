@@ -23,15 +23,20 @@ async function bootstrap() {
   SwaggerModule.setup('api-docs', app, document);
 
   // Enable validation globally
-  app.useGlobalPipes(new ValidationPipe({
-    whitelist: true,
-    forbidNonWhitelisted: true,
-    exceptionFactory: (errors) => {
-      const errorMessages = errors.map((err) => `${err.property} - ${Object.values(err.constraints).join(', ')}`);
-      logger.error(`Validation failed: ${errorMessages.join('; ')}`);
-      throw new BadRequestException('Validation error');
-    },
-  }));
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      exceptionFactory: (errors) => {
+        const errorMessages = errors.map(
+          (err) =>
+            `${err.property} - ${Object.values(err.constraints).join(', ')}`,
+        );
+        logger.error(`Validation failed: ${errorMessages.join('; ')}`);
+        throw new BadRequestException('Validation error');
+      },
+    }),
+  );
 
   await app.listen(3000);
 }
